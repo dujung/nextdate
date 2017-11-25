@@ -5,16 +5,21 @@ digraph nextdate {
 
     Start [fontcolor="black", fillcolor="lightgray", style=filled]; 
     End   [fontcolor="black", fillcolor="lightgray", style=filled]; 
-    Err   [fontcolor="red", fillcolor="lightgray", style=filled]; 
+    Err0   [fontcolor="red", fillcolor="lightgray", style=filled]; 
+    Err1   [fontcolor="red", fillcolor="lightgray", style=filled]; 
+    Err2   [fontcolor="red", fillcolor="lightgray", style=filled]; 
+    Err3   [fontcolor="red", fillcolor="lightgray", style=filled]; 
+    Err4   [fontcolor="red", fillcolor="lightgray", style=filled]; 
 
     Start -> 29;
 
     //Restrictions that the year must have the following invariant: 1801 <= year <= 2021
     29 -> 30 [label = "T" color="blue"];
-        30 -> Err;
+        30 -> Err0;
 
     //these variables will hold the proper values for the nextDate's day, month, and year values, respectively
-    29 -> "33~35" -> 38;
+    29 -> "33~35" [label = "F" color="red"];    // F
+    "33~35" -> 38;
 
     //Is this month with 31 days?
     38 -> 40 [label = "T" color="blue"];    // T
@@ -32,7 +37,7 @@ digraph nextdate {
             53 -> "54~55" [label = "T" color="blue"];
                 "54~55" -> 103;
             53 -> 58 [label = "F" color="red"];
-                58 -> Err;
+                58 -> Err1;
 
     //is this month December?
     48 -> 62 [label = "F" color="red"];
@@ -42,13 +47,13 @@ digraph nextdate {
         64 -> "67~68" [label = "F" color="red"]; // F
             "67~68" -> 69;
                 69 -> 70 [label = "T" color="blue"]; // T
-                    70 -> Err;
+                    70 -> Err2;
                 69 -> 72 [label = "F" color="red"]; // F
                     72 -> 103;
 
 
     //is this month February? we need to check for leap years and such
-    62 -> 77;
+    62 -> 77 [label = "F" color="red"];
     77 -> 79 [label = "T" color="blue"];   // T
         79 -> 80 [label = "T" color="blue"];   //T
             80 -> 103;
@@ -63,22 +68,33 @@ digraph nextdate {
                     91 -> "92~93" [label = "T" color="blue"]; //T
                         "92~93" -> 103;
                     91 -> 96 [label = "F" color="red"];   //F
-                        96 -> Err;
+                        96 -> Err3;
                 90 -> 98 [label = "F" color="red"];   //F
                     98 -> 99 [label = "T" color="blue"];   //T
-                        99 -> Err;
+                        99 -> Err4;
                     98 -> 103 [label = "F" color="red"];  // F 
                 
 
     //return the string representing the nextDate, in the form MM/DD/YY
     103 -> End;
-    Err -> End;
+
+    // Errors
+    Err0 -> End;
+    Err1 -> End;
+    Err2 -> End;
+    Err3 -> End;
+    Err4 -> End;
 
 
     // ranking
     { rank = same; 30; "33~35";}    
-    { rank = same; 40; 48;}    
-    // { rank = same; 50; 62;}    
-    // { rank = same; 64; 77;}    
+    { rank = same; 40; 48;}
+    { rank = same; 50; 62; 41; "43~44"}
+    { rank = same; 64; 77; 53; 51;}
+    { rank = same; "54~55"; 58; 65; 79; "67~68";}
+    { rank = same; 69; 82; 80;}
+    { rank = same; 70; 72; 83; 90}
+    { rank = same; 84; "86~87"; 91; 98}
+    { rank = same; "Err0"; "Err1"; "Err2", "Err3"; "Err4"}
 }
 
