@@ -109,28 +109,28 @@ public class NextDateTest {
 		assertEquals("2/29/2000", date.run(2,28,2000));
 	}
 
-	@Test
-	public void tc16(){
-		assertEquals("3/1/2017", date.run(2,28,2017));
-	}
-
-	@Test
-	public void tc17(){
-		assertEquals("3/1/2000", date.run(2,29,2000));
-	}
-
-	@Test
-	public void tc18(){
-		assertEquals("Invalid Input Date", date.run(2,29,2017));
-	}
-
-	@Test
-	public void tc19(){
-		assertEquals("Invalid Input Date", date.run(2,30,2017));
-	}
-
-	@Test
-	public void tc20(){
-		assertEquals("7/30/2017", date.run(7,30,2017));
-	}
+//	@Test
+//	public void tc16(){
+//		assertEquals("3/1/2017", date.run(2,28,2017));
+//	}
+//
+//	@Test
+//	public void tc17(){
+//		assertEquals("3/1/2000", date.run(2,29,2000));
+//	}
+//
+//	@Test
+//	public void tc18(){
+//		assertEquals("Invalid Input Date", date.run(2,29,2017));
+//	}
+//
+//	@Test
+//	public void tc19(){
+//		assertEquals("Invalid Input Date", date.run(2,30,2017));
+//	}
+//
+//	@Test
+//	public void tc20(){
+//		assertEquals("7/30/2017", date.run(7,30,2017));
+//	}
 }

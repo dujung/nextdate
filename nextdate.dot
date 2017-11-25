@@ -14,67 +14,80 @@ digraph nextdate {
     Start -> 29;
 
     //Restrictions that the year must have the following invariant: 1801 <= year <= 2021
+    29 [width=1.1 shape=diamond]
     29 -> 30 [label = "T" color="blue"];
         30 -> Err0;
-
     //these variables will hold the proper values for the nextDate's day, month, and year values, respectively
     29 -> "33~35" [label = "F" color="red"];    // F
-    "33~35" -> 38;
+        "33~35" -> 38;
 
     //Is this month with 31 days?
+    38 [width=1.1 shape=diamond]
     38 -> 40 [label = "T" color="blue"];    // T
+        40 [width=1.1 shape=diamond]
         40 -> 41 [label = "T" color="blue"];    // F
             41 -> 103;
         40 -> "43~44" [label = "F" color="red"];    // F
             "43~44" -> 103;
+    38 -> 48 [label = "F" color="red"];
 
     //is this month a month with 30 days?
-    38 -> 48 [label = "F" color="red"];
+    48 [width=1.1 shape=diamond]
     48 -> 50 [label = "T" color="blue"];
+        50 [width=1.1 shape=diamond]
         50 -> 51 [label = "T" color="blue"];
             51 -> 103;
         50 -> 53 [label = "F" color="red"];
+            53 [width=1.1 shape=diamond]
             53 -> "54~55" [label = "T" color="blue"];
                 "54~55" -> 103;
             53 -> 58 [label = "F" color="red"];
                 58 -> Err1;
+    48 -> 62 [label = "F" color="red"];
 
     //is this month December?
-    48 -> 62 [label = "F" color="red"];
+    62 [width=1.1 shape=diamond]
     62 -> 64 [label = "T" color="blue"];        // T
+        64 [width=1.1 shape=diamond]
         64 -> 65 [label = "T" color="blue"];    // T
             65 -> 103;
         64 -> "67~68" [label = "F" color="red"]; // F
             "67~68" -> 69;
+                69 [width=1.1 shape=diamond]
                 69 -> 70 [label = "T" color="blue"]; // T
                     70 -> Err2;
                 69 -> 72 [label = "F" color="red"]; // F
                     72 -> 103;
-
+    62 -> 77 [label = "F" color="red"];
 
     //is this month February? we need to check for leap years and such
-    62 -> 77 [label = "F" color="red"];
+    77 [width=1.1 shape=diamond]
     77 -> 79 [label = "T" color="blue"];   // T
+        79 [width=1.1 shape=diamond]
         79 -> 80 [label = "T" color="blue"];   //T
             80 -> 103;
         79 -> 82 [label = "F" color="red"];  // F
+            82 [width=1.1 shape=diamond]
             82 -> 83 [label = "T" color="blue"];   //T
+                83 [width=1.1 shape=diamond]
                 83 -> 84 [label = "T" color="blue"];   // T
                     84 -> 103;
                 83 -> "86~87" [label = "F" color="red"]; //F
                     "86~87" -> 103;
             82 -> 90 [label = "F" color="red"];  //F
+                90 [width=1.1 shape=diamond]
                 90 -> 91 [label = "T" color="blue"]; //T
+                    91 [width=1.1 shape=diamond]
                     91 -> "92~93" [label = "T" color="blue"]; //T
                         "92~93" -> 103;
                     91 -> 96 [label = "F" color="red"];   //F
                         96 -> Err3;
                 90 -> 98 [label = "F" color="red"];   //F
+                    91 [width=1.1 shape=diamond]
                     98 -> 99 [label = "T" color="blue"];   //T
                         99 -> Err4;
                     98 -> 103 [label = "F" color="red"];  // F 
                 
-
     // anything else.
     77 -> 103 [label = "F" color="red"];   // F
 
