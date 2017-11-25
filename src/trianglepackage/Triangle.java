@@ -23,7 +23,7 @@ public class Triangle
 {
 	private int side1, side2, side3;
 	private static final String P_EQUILATERAL = "equilateral";
-	private static final String P_ISOSCELES   = "isossceles";
+	private static final String P_ISOSCELES   = "isosceles";
 	private static final String P_RIGHTANGLED = "right-angled";
 	private static final String P_SCALENE     = "scalene";
 	private static final String P_IMPOSSIBLE  = "impossible";
@@ -71,6 +71,7 @@ public class Triangle
 	 */
 	public int getPerimeter()
 	{  
+		int x = side1 + side2 + side3;
 		return side1 + side2 + side3;
 	}
 
@@ -82,6 +83,17 @@ public class Triangle
 	{
 		if (!isImpossible())
 		{
+			double x =getPerimeter()
+					/ 2
+					* (getPerimeter() / 2 - side1)
+					* (getPerimeter() / 2 - side2)
+					* (getPerimeter() / 2 - side3);
+			
+			double y= Math.sqrt(getPerimeter()
+					/ 2
+					* (getPerimeter() / 2 - side1)
+					* (getPerimeter() / 2 - side2)
+					* (getPerimeter() / 2 - side3));
 			return Math.sqrt(getPerimeter()
 			/ 2
 			* (getPerimeter() / 2 - side1)
@@ -206,17 +218,16 @@ public class Triangle
 	public static void main(String[] args)
 	{
 		Triangle triangle = null;
-		args = new String[3];
-		args[0] = "1";
-		args[1] = "11";
-		args[2] = "3";
-				
 		try
 		{
 			triangle = new Triangle(
-					Integer.parseInt(args[0]),
+/*					Integer.parseInt(args[0]),
 					Integer.parseInt(args[1]),
-					Integer.parseInt(args[2]));
+					Integer.parseInt(args[2]));*/
+					Integer.parseInt("300"),
+					Integer.parseInt("300"),
+					Integer.parseInt("200"));
+			Triangle a= triangle.setSideLengths(400,400,400);
 		}
 		catch (Exception e)
 		{
