@@ -27,7 +27,7 @@ run `gc -vne nextdate.dot`
 
 | Nodes | Edges | Components |
 |-------|-------|------------|
-| 41    | 55    | 1          |
+| 41    | 56    | 1          |
 
 
 ## Test Coverage
@@ -35,7 +35,7 @@ run `gc -vne nextdate.dot`
 _cyclomatic number_ of graph
 `V(G) = e – n + p`
 
-So, V(G) = 55 – 41 + 1 = 15
+So, V(G) = 56 – 41 + 1 = 16
 
 
 
