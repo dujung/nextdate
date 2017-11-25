@@ -99,7 +99,7 @@ public class NextDateStatementTest {
 
 	@Test
 	public void tc13(){
-		assertEquals("2/28/2017", date.run(2,27,2017));
+		assertEquals("3/1/2000", date.run(2,29,2000));
 	}
 
 	@Test

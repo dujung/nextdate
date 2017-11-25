@@ -26,7 +26,7 @@ import org.junit.Test;
 import wb.NextDate;
 
 /**
- * Test Cases by Statement Coverage Analysis
+ * Test Cases by Branch Coverage Analysis
  */
 public class NextDateBranchTest {
 	
@@ -99,7 +99,7 @@ public class NextDateBranchTest {
 
 	@Test
 	public void tc13(){
-		assertEquals("2/28/2017", date.run(2,27,2017));
+		assertEquals("3/1/2000", date.run(2,29,2000));
 	}
 
 	@Test
