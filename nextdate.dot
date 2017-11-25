@@ -75,6 +75,9 @@ digraph nextdate {
                     98 -> 103 [label = "F" color="red"];  // F 
                 
 
+    // anything else.
+    77 -> 103 [label = "F" color="red"];   // F
+
     //return the string representing the nextDate, in the form MM/DD/YY
     103 -> End;
 
