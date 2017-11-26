@@ -5,7 +5,7 @@ package wb;
 
 public class NextDate {
 	
-	
+	 
 	public NextDate(int m, int d, int y)
 	{
 		//int month, day, year; //varibles holding the month, day and year args
